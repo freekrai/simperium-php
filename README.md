@@ -77,7 +77,7 @@ It's also possible to get the data for each document in the index with data=true
 To update fields in an item, post the updated fields.  They'll be merged
 with the current document:
 
-    >>> $simperium->todo->post($todo1_id, {'done': True})
+    >>> $simperium->todo->post($todo1_id, array('done' => 'True'));
     >>> $simperium->todo->get($todo1_id)
     {'text': 'Read general theory of love', 'done': True}
 
