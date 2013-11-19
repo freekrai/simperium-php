@@ -110,11 +110,14 @@ class Simperium{
 		return $this->_post($url,$data,$headers);
 	}
 
-	public function get($uuid){
+	public function get($uuid,$version = ''){
 		$headers = array(
 			'X-Simperium-Token: '.$this->token
 		);
 		$url = $this->api_url.'/1/'.$this->app_name.'/'.$this->bucket.'/i/'.$uuid;
+		if( $version == '' ){
+			$url .= '/v/'.$version;
+		}
 		$ret = $this->_get($url,array(),$headers);
 		return $ret;
 	}
@@ -216,29 +219,3 @@ class Simperium{
 		);
 	}
 }
-
-/*
-
-	$headers = array(
-	    "Content-Type: application/json",
-	    "X-Parse-Application-Id: " . $config['parse']['appid'],
-	    "X-Parse-REST-API-Key: " . $config['parse']['restkey']
-	);
-	$data = array(
-	    'username' => $username,
-	    'password' => $password,
-	);
-	$url = 'https://api.parse.com/1/users';
-	$ch = curl_init();
-	$timeout=5;
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($ch,CURLOPT_URL,$url);
-	curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-	curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-	$output = curl_exec($ch);
-	curl_close($ch);
-	return json_decode($output);
-
-*/
