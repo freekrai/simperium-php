@@ -90,5 +90,5 @@ previous versions of documents:
 Of course, you can delete items:
 
     >>> $simperium->todo->delete($todo1_id)
-    >>> $simperium->todo->index()->count
+    >>> echo $simperium->todo->index()->count
     1
