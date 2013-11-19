@@ -16,7 +16,7 @@ create a new application.  Copy down the new app's name, api key and admin key.
 
 Next install the php client:
 
-    $ sudo pip install git+https://github.com/freekrai/simperium-php.git
+    $ git clone https://github.com/freekrai/simperium-php.git
 
 We'll need to create a user to be able to store data:
 
