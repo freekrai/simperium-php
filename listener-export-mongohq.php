@@ -14,23 +14,26 @@
 	$cv = $db->meta->fineOne(array(
 		'_id' => 'cv',
 	));
-	$cv = $cv['cv'];
-
-	$cv = '';
-	$numTodos = 0;
-	$a = true;
-	while( $a ){
-		$changes = $simperium->todo2->changes($cv,true);
+	if( $cv ){
+		$cv = $cv['cv'];
+	}else{
+		$cv = '';
+	}
+	$bucket = 'todo2';
+	while( true ){
+		$changes = $simperium->$bucket->changes($cv,true);
 		foreach($changes as $change ){
-			echo '<pre>'.print_r($change,true).'</pre><hr />';
 			$data = $change->d;
+			echo '<pre>'.print_r($data,true).'</pre><hr />';
+
 			$cv = $change->cv;
+
             # update mongo with the latest version of the data
 			if( $data ){
-				$data['_id'] = $change->id;
-				$db->bucket->save( $data );
+				$data->_id = $change->id;
+				$db->$bucket->save( $data );
 			}else{
-				$db->bucket->remove( $change->id );
+				$db->$bucket->remove( $change->id );
 			}
 
             # persist the cv to mongo, so changes don't need to be
