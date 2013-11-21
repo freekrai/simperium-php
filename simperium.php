@@ -41,7 +41,6 @@ class Simperium{
 	public function get_token(){
 		return $this->token;
 	}
-	
 	public function set_token($token){
 		$this->token = $token;
 	}
@@ -103,14 +102,11 @@ class Simperium{
 		$uuid = $this->generate_uuid();
 		return $this->post( $uuid, $data );
 	}
-	public function post($uuid,$data,$version = ''){
+	public function post($uuid,$data){
 		$headers = array(
 			'X-Simperium-Token: '.$this->token
 		);
 		$url = $this->api_url.'/1/'.$this->app_name.'/'.$this->bucket.'/i/'.$uuid;
-		if( $version == '' ){
-			$url .= '/v/'.$version;
-		}
 		return $this->_post($url,$data,$headers);
 	}
 
@@ -131,27 +127,28 @@ class Simperium{
 			'X-Simperium-Token: '.$this->token
 		);
 		$url = $this->api_url.'/1/'.$this->app_name.'/buckets';
-		$ret = $this->_get($url,array(),$headers, true);
-		return $ret;
+		return $this->_get($url,array(),$headers, true);
 	}
-
-	public function changes(){
+	public function changes($cv = '',$data= false){
 		$headers = array(
 			'X-Simperium-Token: '.$this->token
 		);
-		$url = $this->api_url.'/1/'.$this->app_name.'/buckets/all';
-		$ret = $this->_get($url,array(),$headers, true);
-		return $ret;
+		$args = array();
+		if( $cv != '' ){
+			$args['cv'] = $cv;
+		}
+		if( $data ){
+			$args['data'] = 1;
+		}
+		$url = $this->api_url.'/1/'.$this->app_name.'/'.$this->bucket.'/all';
+		return $this->_get($url,$args,$headers);
 	}
 
-	public function delete($uuid,$version = ''){
+	public function delete($uuid){
 		$headers = array(
 			'X-Simperium-Token: '.$this->token
 		);
 		$url = $this->api_url.'/1/'.$this->app_name.'/'.$this->bucket.'/i/'.$uuid;
-		if( $version == '' ){
-			$url .= '/v/'.$version;
-		}
 		$ret = $this->_delete($url,array(),$headers);
 		$this->_debug( $ret );		
 	}
