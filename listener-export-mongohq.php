@@ -11,7 +11,7 @@
 	$db = $m->$dbname;  
 	
 	//	grab the last record and resume from there...
-	$cv = $db->meta->fineOne(array(
+	$cv = $db->meta->findOne(array(
 		'_id' => 'cv',
 	));
 	if( $cv ){
