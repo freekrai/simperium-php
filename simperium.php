@@ -74,8 +74,7 @@ class Simperium{
 			'username'=>$username,
 			'new_password'=>$password
 		);
-		$ret = $this->_post($url,$data,$headers);
-		$this->_debug( $ret );
+		return $this->_post($url,$data,$headers);
 	}
 
 	public function update($username, $password,$new_username='',$new_password=''){
@@ -93,8 +92,7 @@ class Simperium{
 		if( $new_password != '' ){
 			$data['new_password'] = $new_password;
 		}
-		$ret = $this->_post($url,$data,$headers);
-		$this->_debug( $ret );
+		return $this->_post($url,$data,$headers);
 	}
 
 //	bucket / document functions
@@ -115,7 +113,7 @@ class Simperium{
 			'X-Simperium-Token: '.$this->token
 		);
 		$url = $this->api_url.'/1/'.$this->app_name.'/'.$this->bucket.'/i/'.$uuid;
-		if( $version == '' ){
+		if( $version != '' ){
 			$url .= '/v/'.$version;
 		}
 		$ret = $this->_get($url,array(),$headers);
