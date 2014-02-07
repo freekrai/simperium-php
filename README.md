@@ -1,6 +1,8 @@
 simperium-php
 ==============
 
+This is an unofficial library for interacting with the Simperium API in PHP. It's based on the [Simperium Python library](https://github.com/Simperium/simperium-python).
+
 Simperium is a simple way for developers to move data as it changes, instantly and automatically. This is the PHP library.
 
 You can [sign up](http://simperium.com) for a hosted version of Simperium. There are Simperium libraries for [other languages](https://simperium.com/overview/) too.
