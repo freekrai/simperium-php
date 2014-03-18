@@ -16,13 +16,34 @@ The Simperium PHP library is available for free and commercial use under the MIT
 To get started, first log into [https://simperium.com](https://simperium.com) and
 create a new application.  Copy down the new app's name, api key and admin key.
 
-Next install the php client:
+Install composer in your project:
 
-    $ git clone https://github.com/freekrai/simperium-php.git
+    curl -s https://getcomposer.org/installer | php
+
+Create a composer.json file in your project root:
+
+	{
+	    "require": {
+	        "freekrai/simperium-php": "dev-master"
+	    }
+	}
+
+Now, run composer and install the package:
+
+	php composer.phar install
+
+Add this line to your application’s index.php file:
+
+	<?php
+	require 'vendor/autoload.php';
+
+If you are running this without Composer, then add this to your index.php file instead:
+
+	require_once dirname(__FILE__) . './Simperium/simperium.php';
 
 We'll need to create a user to be able to store data:
 
-	>>> $simperium = new Simperium_a($yourappname,$yourapikey);
+	>>> $simperium = new Simperium\Simperium($yourappname,$yourapikey);
     >>> $token = $simperium->create('joe@example.com', 'secret');
     >>> echo $token
     '25c11ad089dd4c18b84f24bc18c58fe2'
