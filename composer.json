@@ -2,7 +2,7 @@
     "name": "freekrai/simperium-php",
     "type": "library",
     "description": "This is an unofficial library for interacting with the Simperium API in PHP.",
-    "keywords": ["microframework","rest","router"],
+    "keywords": ["simperium","datastore","notifications"],
     "homepage": "http://github.com/freekrai/simperium-php",
     "license": "MIT",
     "authors": [
