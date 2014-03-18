@@ -1,7 +1,7 @@
 <?php
-	include("simperium.php");
+	require_once dirname(__FILE__) . '/../Simperium/simperium.php';
 
-	$simperium = new Simperium('my-app-id','my-api-key');
+	$simperium = new Simperium\Simperium('my-app-id','my-api-key');
 	$simperium->authorize('joe@example.com', 'secret');
 	
 	$mongohq_url = '';

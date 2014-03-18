@@ -1,8 +1,10 @@
 <?php
 /*
 	Wrapper for the Simperium.com API.
-
 */
+
+namespace Simperium;
+
 class Simperium{
 	private $app_name;
 	private $api_key;
