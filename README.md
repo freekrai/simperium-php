@@ -39,7 +39,7 @@ Add this line to your application’s index.php file:
 
 If you are running this without Composer, then add this to your index.php file instead:
 
-	require_once dirname(__FILE__) . './Simperium/simperium.php';
+	require_once dirname(__FILE__) . './Simperium/Simperium.php';
 
 We'll need to create a user to be able to store data:
 
