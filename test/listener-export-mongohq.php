@@ -1,15 +1,15 @@
 <?php
-	require_once dirname(__FILE__) . '/../Simperium/simperium.php';
+	require_once dirname(__FILE__) . '/../Simperium/Simperium.php';
 
 	$simperium = new Simperium\Simperium('my-app-id','my-api-key');
 	$simperium->authorize('joe@example.com', 'secret');
-	
+
 	$mongohq_url = '';
 	$dbname = '';
-	
+
 	$m = new Mongo( $mongohq_url );
-	$db = $m->$dbname;  
-	
+	$db = $m->$dbname;
+
 	//	grab the last record and resume from there...
 	$cv = $db->meta->findOne(array(
 		'_id' => 'cv',

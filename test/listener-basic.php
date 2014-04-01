@@ -3,14 +3,14 @@
 	This example will set up a loop which listens to changes made to a bucket and display the changes on the screen.
 
 	This can be handy for storing changes locally to a database, or for notifying users of any changes that have been made.
-	
+
 	This should be run from the command-line, not from a web browser.
 */
-	require_once dirname(__FILE__) . '/../Simperium/simperium.php';
+	require_once dirname(__FILE__) . '/../Simperium/Simperium.php';
 
 	$simperium = new Simperium\Simperium('my-app-id','my-api-key');
 	$simperium->authorize('joe@example.com', 'secret');
-	
+
 	$cv = '';
 	$numTodos = 0;
 	$a = true;
