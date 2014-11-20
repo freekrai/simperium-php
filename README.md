@@ -53,7 +53,7 @@ For example, we could store a list of todo items in a todo bucket.  When you
 store items, you need to give them a unique identifier.  Uuids are usually a
 good choice.
 
-    >>> $todo1_id = $simerpium.generate_uuid();
+    >>> $todo1_id = $simperium->generate_uuid();
     >>> $simperium->todo->post($todo1_id,array('text' => 'Read general theory of love', 'done' => False));
 
 We can retrieve this item:
@@ -75,7 +75,7 @@ You can retrieve an index of all of a buckets items:
             {'id': 'c0d07bb7c46e48e693653425eca93af9', 'v': 1}],
         'current': '4f8507b8faf44720dfc432b1',}
 
-Retrieve all the docuemnts in the index:
+Retrieve all the documents in the index:
 
     >>> foreach( $simperium->todo2->index()->index as $v ){
     >>> 	echo $v->id.'<br />';
